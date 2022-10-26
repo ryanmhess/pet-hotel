@@ -8,24 +8,24 @@ namespace pet_hotel
     //  Pet Breed
     public enum PetBreedType 
     {
-      Beagle,     //  0
-      Boxer,      //  1
-      Bulldog,    //  2
-      Labrador,   //  3
-      Poodle,     //  4
-      Retriever,  //  5
-      Shepherd,   //  6
-      Terrier     //  7
+      Shepherd,
+      Poodle,
+      Beagle,     
+      Bulldog,    
+      Terrier,  
+      Boxer,      
+      Labrador,   
+      Retriever  
     }
 
     //  Pet Color
     public enum PetColorType 
     {
-      Black,      //  0
-      Goldern,    //  1
-      Spotted,    //  2
-      Tricolor,   //  3
-      White       //  4
+      White,
+      Black,
+      Goldern,
+      Tricolor,
+      Spotted
     }
 
   public class Pet
@@ -55,6 +55,4 @@ namespace pet_hotel
     public int petOwnerId { get; set; }
     public PetOwner petOwner { get; set; }
   }
-
-  
 }
