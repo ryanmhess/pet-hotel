@@ -23,7 +23,7 @@ namespace pet_hotel
     {
       White,
       Black,
-      Goldern,
+      Golden,
       Tricolor,
       Spotted
     }

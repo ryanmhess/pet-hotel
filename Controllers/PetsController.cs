@@ -38,14 +38,28 @@ namespace pet_hotel.Controllers
     }
 
     //  PUT
-    [HttpPut("{id}")]
-    public Pet Put(int id, Pet pet)
+    [HttpPut("{id}/checkin")]
+    [HttpPut("{id}/checkout")]
+    public Pet Put(int id)
     {
-      pet.id = id;
-      _context.Update(pet);
+      Pet updatePet = _context.Pets.Find(id);
+      DateTime now = DateTime.UtcNow;
+      updatePet.checkedInAt = now;
+      _context.Update(updatePet);
       _context.SaveChanges();
-      return pet;
+      return updatePet;
     }
+
+    // [HttpPut("{id}/checkout")]
+    // public Pet Put(int id)
+    // {
+    //   Pet updatePet = _context.Pets.Find(id);
+    //   DateTime now = DateTime.UtcNow;
+    //   updatePet.checkedInAt = now;
+    //   _context.Update(updatePet);
+    //   _context.SaveChanges();
+    //   return updatePet;
+    // }
 
     //  DELETE /api/pets/:id
     [HttpDelete("{id}")]
