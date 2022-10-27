@@ -44,7 +44,13 @@ namespace pet_hotel.Controllers
     {
       Pet updatePet = _context.Pets.Find(id);
       DateTime now = DateTime.UtcNow;
-      updatePet.checkedInAt = now;
+      
+      if (updatePet.checkedInAt == null) {
+        updatePet.checkedInAt = now;
+      }
+      else {
+        updatePet.checkedInAt = null;
+      }
       _context.Update(updatePet);
       _context.SaveChanges();
       return updatePet;
