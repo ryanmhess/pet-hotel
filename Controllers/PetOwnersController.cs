@@ -25,32 +25,40 @@ namespace pet_hotel.Controllers
       return _context.PetOwners;
     }
 
+    [HttpGet("{id}")]
+    public ActionResult<PetOwner> Get(int id)
+    {
+      PetOwner petOwner = _context.PetOwners.Find(id);
+      return petOwner;
+    }
+
     //  POST /api/petowners
     [HttpPost]
-    public PetOwner Post(PetOwner petOwner)
+    public IActionResult Create(PetOwner petOwner) 
     {
       _context.Add(petOwner);
       _context.SaveChanges();
-      return petOwner;
+      return CreatedAtAction(nameof(Create), new { id = petOwner.id}, petOwner);
     }
     
     //  PUT (STRETCH to update the pets own field)
-    // [HttpPut("{id}")]
-    // public PetOwner Put(int id, PetOwner petOwner)
-    // {
-    //   petOwner.id = id;
-    //   _context.Update(petOwner);
-    //   _context.SaveChanges();
-    //   return petOwner;
-    // }
+    [HttpPut("{id}")]
+    public PetOwner Put(int id, PetOwner petOwner)
+    {
+      petOwner.id = id;
+      _context.Update(petOwner);
+      _context.SaveChanges();
+      return petOwner;
+    }
 
     //  DELETE /api/pets/:id
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public IActionResult Delete(int id)
     {
       PetOwner petOwner = _context.PetOwners.Find(id);
       _context.PetOwners.Remove(petOwner);
       _context.SaveChanges();
+      return NoContent();
     }
   }
 }
