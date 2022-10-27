@@ -38,6 +38,14 @@ namespace pet_hotel.Controllers
     }
 
     //  PUT
+    [HttpPut("{id}")]
+    public Pet Put(int id, Pet pet)
+    {
+      pet.id = id;
+      _context.Update(pet);
+      _context.SaveChanges();
+      return pet;
+    }
 
     //  DELETE /api/pets/:id
     [HttpDelete("{id}")]

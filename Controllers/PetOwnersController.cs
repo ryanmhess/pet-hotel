@@ -34,8 +34,16 @@ namespace pet_hotel.Controllers
       return petOwner;
     }
     
-    //  PUT
-    
+    //  PUT (STRETCH to update the pets own field)
+    // [HttpPut("{id}")]
+    // public PetOwner Put(int id, PetOwner petOwner)
+    // {
+    //   petOwner.id = id;
+    //   _context.Update(petOwner);
+    //   _context.SaveChanges();
+    //   return petOwner;
+    // }
+
     //  DELETE /api/pets/:id
     [HttpDelete("{id}")]
     public void Delete(int id)
